@@ -8,6 +8,7 @@ import (
 	"trace"
 )
 
+// Two chan join and leave because we want to modify map client by one thing at a time when leave or join
 type room struct {
 
 	// forward is a channel that holds incoming messages
