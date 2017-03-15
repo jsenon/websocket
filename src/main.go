@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"sync"
 	"text/template"
-
 	"trace"
 )
 
