@@ -2,3 +2,4 @@
 *.sublime-project
 source-env
 bin/
+src/chat
