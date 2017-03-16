@@ -22,7 +22,7 @@ type templateHandler struct {
 func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.once.Do(func() {
 		// Use Template caching, execute once on program initialization
-		t.templ = template.Must(template.ParseFiles(filepath.Join("src/templates", t.filename)))
+		t.templ = template.Must(template.ParseFiles(filepath.Join("templates", t.filename)))
 	})
 	t.templ.Execute(w, r)
 }
@@ -36,8 +36,12 @@ func main() {
 
 	// http.Handle("/", &templateHandler{filename: "chat.html"})
 	http.Handle("/chat", MustAuth(&templateHandler{filename: "chat.html"}))
-
+	http.Handle("/login", &templateHandler{filename: "login.html"})
+	http.HandleFunc("/auth/", loginHandler)
 	http.Handle("/room", r)
+
+	// If local css instead of CDN
+	// http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("/opt/mysite/assets/"))))
 
 	// get the room going
 	go r.run()
