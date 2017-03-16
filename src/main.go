@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"github.com/skretchr/gomniauth/providers/google"
+	"github.com/stretchr/gomniauth"
 	"log"
 	"net/http"
 	"os"
@@ -30,6 +32,12 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func main() {
 	var addr = flag.String("addr", ":8080", "The addr of the application.")
 	flag.Parse() // parse the flags
+
+	// setup gomniauth
+	gomniauth.SetSecurityKey("77ADA68BAF42E7B94232F628988D7")
+	gomniauth.WithProviders(
+		google.New("840307673424-gj4u7bdeumk29algdpst4da9c6gts233.apps.googleusercontent.com", "252Pc_22fbm5d90QbpchjNju", "http://localhost:8090/auth/callback/google"),
+	)
 
 	r := newRoom()
 	r.tracer = trace.New(os.Stdout)
