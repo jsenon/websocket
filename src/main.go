@@ -21,6 +21,7 @@ type templateHandler struct {
 // ServeHTTP handles the HTTP request.
 func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.once.Do(func() {
+		// Use Template caching, execute once on program initialization
 		t.templ = template.Must(template.ParseFiles(filepath.Join("src/templates", t.filename)))
 	})
 	t.templ.Execute(w, r)
