@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/skretchr/gomniauth/providers/google"
 	"github.com/stretchr/gomniauth"
+	"github.com/stretchr/gomniauth/providers/google"
 	"log"
 	"net/http"
 	"os"
