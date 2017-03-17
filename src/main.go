@@ -36,8 +36,9 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.templ.Execute(w, data)
 }
 
+var addr = flag.String("addr", ":8090", "The addr of the application.")
+
 func main() {
-	var addr = flag.String("addr", ":8080", "The addr of the application.")
 	flag.Parse() // parse the flags
 
 	// setup gomniauth

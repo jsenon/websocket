@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gorilla/websocket"
+	"time"
 )
 
 // client represents a single chatting user.
@@ -38,7 +39,7 @@ func (c *client) write() {
 	for msg := range c.send {
 		err := c.socket.WriteJSON(msg)
 		if err != nil {
-			break
+			return
 		}
 	}
 }

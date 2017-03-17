@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/gorilla/websocket"
+	"github.com/stretchr/objx"
 	"log"
 	"net/http"
-	"github.com/stretchr/objx"
-	"github.com/gorilla/websocket"
 	"trace"
 )
 
@@ -54,7 +54,7 @@ func (r *room) run() {
 			close(client.send)
 			r.tracer.Trace("Client left")
 		case msg := <-r.forward:
-			r.tracer.Trace("Message received: ", msg.Message)
+			r.tracer.Trace("Message received: ", string(msg.Message))
 			// forward message to all clients
 			for client := range r.clients {
 				client.send <- msg
@@ -83,10 +83,10 @@ func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	client := &client{
-		socket: socket,
-		send:   make(chan *message, messageBufferSize),
-		room:   r,
-		userData: objx.MustFromBase64(authCookie.Value)
+		socket:   socket,
+		send:     make(chan *message, messageBufferSize),
+		room:     r,
+		userData: objx.MustFromBase64(authCookie.Value),
 	}
 	r.join <- client
 	defer func() { r.leave <- client }()
