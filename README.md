@@ -20,6 +20,9 @@ go get github.com/stretchr/gomniauth
 go get github.com/stretchr/gomniauth/providers/google
 go get github.com/stretchr/objx
 go get github.com/gorilla/websocket
+go get github.com/clbanning/x2j
+go get github.com/ugorji/go/codec
+go get labix.org/v2/mgo/bson
 cd ../src  
 go build -o chat
 ```
