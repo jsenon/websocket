@@ -5,3 +5,5 @@ bin/
 pkg/
 src/chat
 client
+src/github.com/
+src/labix.org/
