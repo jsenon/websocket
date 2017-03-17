@@ -2,5 +2,6 @@
 *.sublime-project
 source-env
 bin/
+pkg/
 src/chat
 client
