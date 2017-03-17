@@ -8,17 +8,19 @@ You need to have:
 
 * Go 1.8
 * Go Environment properly set
+* Bzr Utils
 
 ### Compilation
 
 
 ```sh
 git clone https://github.com/jsenon/websocket.git
+cd pkg
 go get github.com/stretchr/gomniauth
 go get github.com/stretchr/gomniauth/providers/google
 go get github.com/stretchr/objx
 go get github.com/gorilla/websocket
-cd src  
+cd ../src  
 go build -o chat
 ```
 
