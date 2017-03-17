@@ -11,7 +11,6 @@ You need to have:
 
 ### Compilation
 
-Start your redis
 
 ```sh
 git clone https://github.com/jsenon/websocket.git
