@@ -1,6 +1,6 @@
 # websocket
 
-Build CLI Chat Server based on redis
+Build Web Chat Server based on websocket
 
 ### Prerequisite
 
