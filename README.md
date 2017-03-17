@@ -8,7 +8,6 @@ You need to have:
 
 * Go 1.8
 * Go Environment properly set
-* Redis Docker image
 
 ### Compilation
 
